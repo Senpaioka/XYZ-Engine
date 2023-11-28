@@ -1,0 +1,110 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form 2</title>
+</head>
+<!-- style part -->
+<style>
+    body {
+        font-family: Arial, sans-serif;
+    }
+    form {
+        max-width: 400px;
+        margin: 20px auto;
+    }
+    label {
+        display: block;
+        margin-bottom: 8px;
+    }
+    input, select, textarea {
+        width: 100%;
+        padding: 8px;
+        margin-bottom: 10px;
+        box-sizing: border-box;
+    }
+    button {
+        background-color: #4CAF50;
+        color: white;
+        padding: 10px 15px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+    }
+    button:hover {
+        background-color: #45a049;
+    }
+
+    
+    table {
+        border-collapse: collapse;
+        width: 100%;
+        margin-top: 20px;
+    }
+    th, td {
+        border: 1px solid #dddddd;
+        text-align: left;
+        padding: 8px;
+    }
+    th {
+        background-color: #f2f2f2;
+    }
+</style>
+<body>
+
+
+
+    <center><h3>Provide Your Values:</h3></center>
+
+    <form action="{% url 'XYZ:second_form'%}" method="POST">
+        {% csrf_token %}
+
+            <label for="max_x">Max X:</label>
+            {{ form.maximum_x }}
+    
+            <label for="min_x">Min X:</label>
+            {{ form.minimum_x }}
+
+            <label for="max_y">Max Y:</label>
+            {{ form.maximum_y}}
+
+            <label for="min_y">Min Y:</label>
+            {{ form.minimum_y }}
+
+            <label for="max_z">Max Z:</label>
+            {{ form.maximum_z }}
+
+            <label for="min_z">Min Z:</label>
+            {{ form.minimum_z }}
+
+
+            <button type="submit"> Submit </button>
+    </form>
+    
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+
+
+    <center><h3>Upload CSV file:</h3></center>
+
+    <form action="{% url 'XYZ:csv_form'%}" method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        
+           <label for="myfile">Select a file:</label>
+           <input type="file" id="myfile" name="myfile" required> 
+           <button type="submit"> Upload </button>
+        
+        </form>
+
+
+        
+        <center><a href='{% url 'XYZ:first_form' %}'>Home</a></center>
+</body>
+</html> 
